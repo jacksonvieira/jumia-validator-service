@@ -3,10 +3,11 @@
 This project requires the implementation of a basic business logic related to the validation of international phone numbers.
 This project contains a Spring Boot Application.
 
-###Prerequisities and Dependencies
-Java 8
-Apache Commons Lang
-Apache HTTP Client
+#rerequisities and Dependencies
+
+.Java 8;
+.Apache Commons Lang;
+.Apache HTTP Client;
 
 
 ###Executing Unit Tests
