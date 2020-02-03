@@ -40,6 +40,6 @@ The unit tests of the service can be executed with the following Maven command
 - PUT /customers{id} - update all data customer;
 - PATCH /customers/{id} - update some data customer;
 - DELETE /customers{id} - remove a customer;
-- GET /customers/page - find all customers pageable;
+- GET /customers/page - find all customers pageable with filters (Country, State);
 - GET /customers/{id}/validate - check if phone number from customer is valid;
 
