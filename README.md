@@ -5,9 +5,9 @@ This project contains a Spring Boot Application.
 
 ### Rerequisities and Dependencies
 
-.Java 8;
-.Apache Commons Lang;
-.Apache HTTP Client;
+- Java 8;
+- Apache Commons Lang;
+- Apache HTTP Client;
 
 
 ### Executing Unit Tests
