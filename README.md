@@ -51,7 +51,7 @@ The unit tests of the service can be executed with the following Maven command
 
 ### How to use
 
-Configure the fila application.properties with de url database, ex:
+Configure the file application.properties with de url database, ex:
 ```spring.datasource.url=jdbc:sqlite:/home/jackson/Downloads/java/exec_java/sample.db```
 
 
