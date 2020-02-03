@@ -1,16 +1,16 @@
-# Service Number Validator
+### Service Number Validator
 
 This project requires the implementation of a basic business logic related to the validation of international phone numbers.
 This project contains a Spring Boot Application.
 
-#rerequisities and Dependencies
+### Rerequisities and Dependencies
 
 .Java 8;
 .Apache Commons Lang;
 .Apache HTTP Client;
 
 
-###Executing Unit Tests
+### Executing Unit Tests
 The unit tests of the service can be executed with the following Maven command
 
 mvn clean install -Punit-tests
