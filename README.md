@@ -1,6 +1,7 @@
 ### Service Number Validator
 
-This project requires the implementation of a basic business logic related to the validation of international phone numbers.
+This project contains a simple basic business logic related to the validation of international phone numbers.
+
 This project contains a Spring Boot Application.
 
 ### Rerequisities and Dependencies
@@ -28,8 +29,11 @@ The unit tests of the service can be executed with the following Maven command
 - [X] Find Customers by filters
 
 
-> ### Utilização
+> ### Examples
 
+#### GET 
+- http://localhost:9400/customers/pages/?page=0&size=10&filterBy=country:cameroon
+- https://localhost:9400/customers/33
 
 
 ### The API methods that can be invoked
