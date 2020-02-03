@@ -8,6 +8,7 @@ This project contains a Spring Boot Application.
 - Java 8;
 - Apache Commons Lang;
 - Apache HTTP Client;
+- SQLITE3;
 
 
 ### Executing Unit Tests
