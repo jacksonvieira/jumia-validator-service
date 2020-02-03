@@ -13,7 +13,7 @@ This project contains a Spring Boot Application.
 ### Executing Unit Tests
 The unit tests of the service can be executed with the following Maven command
 
-mvn clean install -Punit-tests
+```mvn clean install -Punit-tests```
 
 ### Features
 
