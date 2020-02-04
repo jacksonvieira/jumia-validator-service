@@ -33,7 +33,6 @@ The unit tests of the service can be executed with the following Maven command
 
 #### GET 
 - http://localhost:9410/customers/pages/?page=0&size=10
-- http://localhost:9410/customers/pages/?page=0&size=10&filterBy=country:273
 - http://localhost:9410/customers?filterBy=country:273,is_valid:true
 - https://localhost:9410/customers/33
 - https://localhost:9410/customers/33/validate
