@@ -97,7 +97,6 @@ public class CustomerService extends JumiaService<Customer> {
 				}
 			}
 		}
-		// update array
 		return customers;
 	}
 
@@ -117,7 +116,6 @@ public class CustomerService extends JumiaService<Customer> {
 					customers.remove(customer);
 			}
 		}
-		// update array
 		return customers;
 	}
 
