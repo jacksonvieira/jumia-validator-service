@@ -41,9 +41,10 @@ public class CustomerController {
 	private JumiaProperties jumiaProperties;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Customer>> getCustomers() {
+	public ResponseEntity<List<Customer>> getCustomers(
+			@RequestParam(name = "filterBy", required = false) List<String> filterBy) {
 
-		List<Customer> customers = service.all();
+		List<Customer> customers = service.all(getFilters(filterBy));
 
 		if (null == customers)
 			return new ResponseEntity<List<Customer>>((List<Customer>) null, HttpStatus.NO_CONTENT);
@@ -135,9 +136,8 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/pages", method = RequestMethod.GET)
-	public ResponseEntity<Page<Customer>> getPages(
-			@RequestParam(name = "filterBy", required = false) List<String> filterBy, Pageable pageable) {
-		Page<Customer> customers = service.all(getFilters(filterBy), pageable);
+	public ResponseEntity<Page<Customer>> getPages(Pageable pageable) {
+		Page<Customer> customers = service.all(pageable);
 		return new ResponseEntity<Page<Customer>>(customers, HttpStatus.OK);
 	}
 

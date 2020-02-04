@@ -34,19 +34,20 @@ The unit tests of the service can be executed with the following Maven command
 #### GET 
 - http://localhost:9410/customers/pages/?page=0&size=10
 - http://localhost:9410/customers/pages/?page=0&size=10&filterBy=country:273
+- http://localhost:9410/customers?filterBy=country:273,is_valid:true
 - https://localhost:9410/customers/33
 - https://localhost:9410/customers/33/validate
 
 
 ### The API methods that can be invoked
 
-- GET /customers - find all customers;
+- GET /customers - find all customers (with filters (Country, state of number));
 - GET /customers/{id} - find a single customer by id;
 - POST /customers/{id} - create a new Customer;
 - PUT /customers{id} - update all data customer;
 - PATCH /customers/{id} - update some data customer;
 - DELETE /customers{id} - remove a customer;
-- GET /customers/page - find all customers pageable with filters (Country, State);
+- GET /customers/page - find all customers pageable ;
 - GET /customers/{id}/validate - check if phone number from customer is valid;
 
 ### How to use

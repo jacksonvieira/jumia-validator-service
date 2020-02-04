@@ -1,5 +1,6 @@
 package com.jumia.validator.customer.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,9 +44,81 @@ public class CustomerService extends JumiaService<Customer> {
 		return repository.findAllPageable(pageable);
 	}
 
-	public Page<Customer> all(List<Pair<String, List<String>>> filters, Pageable pageable) {
+	@Cacheable("customers")
+	public List<Customer> all(List<Pair<String, List<String>>> filters) {
 
-		return repository.findAllPageable(pageable);
+		List<Customer> customers = repository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+
+		if (filters != null) {
+			filters.forEach(filter -> applyFilters(filter.getFirst(), filter.getSecond(), customers));
+		}
+
+		return customers;
+	}
+
+	/**
+	 * Apply filters from client
+	 * 
+	 * @param key       - ex: country
+	 * @param values    - ex: 237
+	 * @param customers
+	 */
+	private void applyFilters(String key, List<String> values, List<Customer> customers) {
+		if (key.equals("country")) {
+			customers = filterByCountry(customers, values.get(0));
+		}
+		if (key.equals("is_valid")) {
+			customers = filterByState(customers, values.get(0));
+		}
+	}
+
+	/**
+	 * This it is responsible for apply filter state, there are two values (true or
+	 * false)
+	 * 
+	 * @param customers
+	 * @param value     - true or false
+	 * @return List<Customer>
+	 */
+	private List<Customer> filterByState(List<Customer> customers, String value) {
+		List<Customer> customersOnWirte = new ArrayList<>(customers);
+		for (Customer customer : customersOnWirte) {
+			Boolean isValid = Boolean.parseBoolean(value);
+			Integer countryCode = tryToExtractCountry(customer.getPhone());
+
+			if (null != isValid && null != countryCode) {
+				for (Country country : Country.values()) {
+					if (country.getCountryCode().equals(countryCode)) {
+						if (!(validatePhone(country, customer.getPhone()).equals(isValid))) {
+							customers.remove(customer);
+							break;
+						}
+					}
+				}
+			}
+		}
+		// update array
+		return customers;
+	}
+
+	/**
+	 * This method it is responsible for apply filter Country
+	 * 
+	 * @param customers
+	 * @param value     - 237,256......
+	 * @return List<Customer>
+	 */
+	private List<Customer> filterByCountry(List<Customer> customers, String value) {
+		ArrayList<Customer> customersOnWirte = new ArrayList<>(customers);
+		for (Customer customer : customersOnWirte) {
+			Integer countryCode = Integer.parseInt(value);
+			if (null != countryCode) {
+				if (!countryCode.equals(tryToExtractCountry(customer.getPhone())))
+					customers.remove(customer);
+			}
+		}
+		// update array
+		return customers;
 	}
 
 	@Cacheable("customers")
